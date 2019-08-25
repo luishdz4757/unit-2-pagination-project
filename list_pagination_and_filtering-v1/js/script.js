@@ -34,54 +34,56 @@ const studentList = document.querySelectorAll('.student-item');
        that will be passed into the parens later when you call or 
        "invoke" the function 
 ***/
-const showPage = (list, page) => {
+function showPage (list, page) {
   let startIndex = (page * itemsPerPage ) - itemsPerPage
   let endIndex = (page * itemsPerPage) 
   for (let i=0; i<list.length ; i++ ) {
      if (i >= startIndex && i<= endIndex) {
-     list [i].stlye.display = 'block';
+       list [i].stlye.display = 'block';
      } else {
-     list[i].style.display = 'none';
+       list[i].style.display = 'none';
      }
-  }
-  
-}
+  } 
+};
 
-
+//Calls Initial first 10 names when site first loads up
+showPage(studentList, 1);
 
 /*** 
    Create the `appendPageLinks function` to generate, append, and add 
    functionality to the pagination buttons.
 ***/
 const appendPageLinks = (list) => {
-  const totalPages = math.ceiling(list.length / itemsPerPage);
+  const totalPages = math.ceiling((list.length / itemsPerPage)); //the amount of pages needed 
  
-  let div = document.createElement('div');
-  div.classList.add('pagination');
-  document.querySelector('.page').appendChild(div);
+  const div = document.createElement('div');
+  div.className = 'pagination'; //adds pagination class to div
+  document.querySelector('.page').appendChild(div); //appends the 'pagination' div with the divs with .page classes
+  let ul = document.createElement('ul');
+  div.appendChild(ul);
 
-
-let ul = document.createElement('ul');
-div.appendChild(ul);
-
-for (let i = 0; i<list.length; i++) {
+//loops through list and creates li and a tags.
+for (let i = 0; i<list.length; i+=1) {
 const li = document.createElement('li');
 const a = document.createElement('a');
 a.href = '#';
-}
-
+a.textContent = i;
 ul.appendChild(li);
 li.appendChild(a);
+}
 
-
-a.addEventListener('click', (e) => {
-  showPage(list, i + 1)
+const activeLinks = document.querySelectorAll('.active')
+//removes active class when 'a' elements are clicked
+a.addEventListener('click', ( removeClass ) => {
+  showPage(list, event.target.textContent);
   event.target.className = 'active';
-})
-for (let i = 0; i<list.length; i++){
- list.classList.remove('active')
-};
-
+  function removeClass() {
+    for (var i = 0; i <activeLinks.length; i++) {
+      activeLinks[i].classList.remove('active')
+      }
+}
+});
+//
 showPage(studentList, 1);
 appendPageLinks(studentList);
 // Remember to delete the comments that came with this file, and replace them with your own code comments
