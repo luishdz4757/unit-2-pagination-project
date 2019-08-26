@@ -54,7 +54,7 @@ showPage(studentList, 1);
    functionality to the pagination buttons.
 ***/
 const appendPageLinks = (list) => {
-  const totalPages = math.ceiling((list.length / itemsPerPage)); //the amount of pages needed 
+  const totalPages = math.ceil((list.length / itemsPerPage)); //the amount of pages needed 
  
   const div = document.createElement('div');
   div.className = 'pagination'; //adds pagination class to div
