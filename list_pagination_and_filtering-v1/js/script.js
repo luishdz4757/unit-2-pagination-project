@@ -72,9 +72,10 @@ ul.appendChild(li);
 li.appendChild(a);
 }
 
-const activeLinks = document.querySelectorAll('a')
+let aLinks = document.querySelector('a');
+let activeLinks = document.querySelectorAll('a');
 //removes active class when 'a' elements are clicked
-a.addEventListener('click', ( removeClass ) => {
+aLinks.addEventListener('click', ( removeClass ) => {
   showPage(list, event.target.textContent);
     function removeClass() {
       for (var i = 0; i <activeLinks.length; i++) {
