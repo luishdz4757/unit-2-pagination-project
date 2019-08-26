@@ -38,8 +38,8 @@ function showPage (list, page) {
   let startIndex = (page * itemsPerPage ) - itemsPerPage
   let endIndex = (page * itemsPerPage) 
   for (let i=0; i<list.length ; i++ ) {
-     if (i >= startIndex && i<= endIndex) {
-       list [i].stlye.display = 'block';
+     if (i >= startIndex && i< endIndex) {
+       list[i].style.display = 'block';
      } else {
        list[i].style.display = 'none';
      }
@@ -63,7 +63,7 @@ const appendPageLinks = (list) => {
   div.appendChild(ul);
 
 //loops through list and creates li and a tags.
-for (let i = 0; i<list.length; i+=1) {
+for (let i = 0; i<totalPages; i+=1) {
 const li = document.createElement('li');
 const a = document.createElement('a');
 a.href = '#';
@@ -77,12 +77,13 @@ const activeLinks = document.querySelectorAll('.active')
 a.addEventListener('click', ( removeClass ) => {
   showPage(list, event.target.textContent);
   event.target.className = 'active';
-  function removeClass() {
-    for (var i = 0; i <activeLinks.length; i++) {
-      activeLinks[i].classList.remove('active')
-      }
+    function removeClass() {
+      for (var i = 0; i <activeLinks.length; i++) {
+        activeLinks[i].classList.remove('active')
+        }
+     }
+  });
 }
-});
 //
 showPage(studentList, 1);
 appendPageLinks(studentList);
