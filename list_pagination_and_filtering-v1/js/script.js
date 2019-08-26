@@ -54,7 +54,7 @@ showPage(studentList, 1);
    functionality to the pagination buttons.
 ***/
 const appendPageLinks = (list) => {
-  const totalPages = math.ceil((list.length / itemsPerPage)); //the amount of pages needed 
+  const totalPages = Math.ceil((list.length / itemsPerPage)); //the amount of pages needed 
  
   const div = document.createElement('div');
   div.className = 'pagination'; //adds pagination class to div
@@ -72,14 +72,16 @@ ul.appendChild(li);
 li.appendChild(a);
 }
 
-const activeLinks = document.querySelectorAll('.active')
+const activeLinks = document.querySelectorAll('a')
 //removes active class when 'a' elements are clicked
 a.addEventListener('click', ( removeClass ) => {
   showPage(list, event.target.textContent);
-  event.target.className = 'active';
     function removeClass() {
       for (var i = 0; i <activeLinks.length; i++) {
-        activeLinks[i].classList.remove('active')
+        activeLinks[i].classList.remove('active');
+        if (event.target){
+           event.target = 'active';
+        }
         }
      }
   });
