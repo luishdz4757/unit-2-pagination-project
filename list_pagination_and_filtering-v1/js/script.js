@@ -67,26 +67,32 @@ for (let i = 0; i<totalPages; i+=1) {
 const li = document.createElement('li');
 const a = document.createElement('a');
 a.href = '#';
-a.textContent = i;
+a.textContent = i + 1;
 ul.appendChild(li);
 li.appendChild(a);
 }
 
-let aLinks = document.querySelector('a');
+let liLinks = document.querySelector('li');
 let activeLinks = document.querySelectorAll('a');
 //removes active class when 'a' elements are clicked
-aLinks.addEventListener('click', ( removeClass ) => {
-  showPage(list, event.target.textContent);
-    function removeClass() {
-      for (var i = 0; i <activeLinks.length; i++) {
-        activeLinks[i].classList.remove('active');
-        if (event.target){
-           event.target = 'active';
-        }
-        }
+function removeClass() {
+   for (var i = 0; i <activeLinks.length; i++) {
+     activeLinks[i].classList.remove('active');
+     if (event.target){
+        event.target = 'active';
      }
-  });
+   }
 }
+liLinks.parentElement.parentElement.addEventListener('click', (e) => {
+  showPage(list, event.target.textContent);
+    removeClass();
+     });
+   }
+   
+ 
+    
+  
+
 //
 showPage(studentList, 1);
 appendPageLinks(studentList);
