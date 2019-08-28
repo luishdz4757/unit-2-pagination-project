@@ -72,6 +72,7 @@ ul.appendChild(li);
 li.appendChild(a);
 }
 
+// variables for the eventListeners
 let liLinks = document.querySelector('li');
 let activeLinks = document.querySelectorAll('a');
 //removes active class when 'a' elements are clicked
@@ -83,14 +84,14 @@ function removeClass() {
      }
    }
 }
-liLinks.parentElement.parentElement.addEventListener('click', (e) => {
+
+//Changes page and shows corresponding names when you click on page buttons.
+ul.addEventListener('click', (e) => {
   showPage(list, event.target.textContent);
     removeClass();
      });
    }
    
- 
-    
   
 
 //
